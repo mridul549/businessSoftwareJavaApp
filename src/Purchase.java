@@ -16,8 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class SalePage extends JFrame {
+public class Purchase extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -26,7 +28,6 @@ public class SalePage extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
@@ -52,7 +53,7 @@ public class SalePage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SalePage() {
+	public Purchase() {
 		setBackground(new Color(34, 40, 48));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -69,24 +70,15 @@ public class SalePage extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JButton clearBtn = new JButton("Clear");
-		clearBtn.setBackground(new Color(238, 238, 238));
-		clearBtn.setBounds(144, 754, 66, 25);
-		panel.add(clearBtn);
-		
-		JButton btnAddProduct = new JButton("Add Product");
-		btnAddProduct.setBackground(new Color(255, 217, 102));
-		btnAddProduct.setBounds(222, 754, 110, 25);
-		panel.add(btnAddProduct);
-		
 		JPanel customerDetails = new JPanel();
 		customerDetails.setBorder(new LineBorder(new Color(238, 238, 238), 1, true));
 		customerDetails.setBackground(new Color(77, 170, 179));
-		customerDetails.setBounds(12, 12, 320, 264);
+		customerDetails.setBounds(12, 12, 322, 659);
 		panel.add(customerDetails);
 		customerDetails.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Invoice Number");
+		JLabel lblNewLabel = new JLabel("Vendor Name");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setForeground(new Color(238, 238, 238));
 		lblNewLabel.setBounds(12, 12, 105, 15);
 		customerDetails.add(lblNewLabel);
@@ -95,19 +87,22 @@ public class SalePage extends JFrame {
 		textPane.setBounds(146, 12, 162, 28);
 		customerDetails.add(textPane);
 		
-		JLabel lblCustomerName = new JLabel("Customer Name");
+		JLabel lblCustomerName = new JLabel("Product Code");
+		lblCustomerName.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblCustomerName.setForeground(SystemColor.window);
 		lblCustomerName.setBounds(12, 62, 105, 15);
 		customerDetails.add(lblCustomerName);
 		
-		JLabel lblCustomerContact = new JLabel("Customer Contact");
+		JLabel lblCustomerContact = new JLabel("Intial Quantity");
+		lblCustomerContact.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblCustomerContact.setForeground(SystemColor.window);
-		lblCustomerContact.setBounds(12, 112, 113, 15);
+		lblCustomerContact.setBounds(12, 272, 113, 15);
 		customerDetails.add(lblCustomerContact);
 		
-		JLabel lblCustomerAddress = new JLabel("Customer Address");
+		JLabel lblCustomerAddress = new JLabel("Reorder Level");
+		lblCustomerAddress.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblCustomerAddress.setForeground(SystemColor.window);
-		lblCustomerAddress.setBounds(12, 164, 123, 15);
+		lblCustomerAddress.setBounds(12, 320, 123, 15);
 		customerDetails.add(lblCustomerAddress);
 		
 		textField = new JTextField();
@@ -123,78 +118,88 @@ public class SalePage extends JFrame {
 		textField_2 = new JTextField();
 		textField_2.setHorizontalAlignment(SwingConstants.LEFT);
 		textField_2.setColumns(10);
-		textField_2.setBounds(146, 162, 162, 75);
+		textField_2.setBounds(146, 162, 162, 28);
 		customerDetails.add(textField_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Product Type");
+		lblNewLabel_1.setBounds(12, 115, 147, 15);
+		customerDetails.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(12, 344, 147, 15);
-		panel.add(lblNewLabel_1);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(158, 338, 174, 28);
-		panel.add(textField_3);
+		textField_3.setBounds(146, 210, 162, 28);
+		customerDetails.add(textField_3);
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Product Name");
+		lblNewLabel_1_1.setBounds(12, 167, 147, 15);
+		customerDetails.add(lblNewLabel_1_1);
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setBounds(12, 387, 147, 15);
-		panel.add(lblNewLabel_1_1);
 		
 		textField_4 = new JTextField();
+		textField_4.setBounds(146, 267, 162, 28);
+		customerDetails.add(textField_4);
 		textField_4.setColumns(10);
-		textField_4.setBounds(158, 381, 174, 28);
-		panel.add(textField_4);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Brand Name");
+		lblNewLabel_1_2.setBounds(12, 215, 147, 15);
+		customerDetails.add(lblNewLabel_1_2);
+		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1_2.setForeground(Color.WHITE);
-		lblNewLabel_1_2.setBounds(12, 427, 147, 15);
-		panel.add(lblNewLabel_1_2);
 		
 		textField_5 = new JTextField();
+		textField_5.setBounds(146, 315, 162, 28);
+		customerDetails.add(textField_5);
 		textField_5.setColumns(10);
-		textField_5.setBounds(158, 421, 174, 28);
-		panel.add(textField_5);
-		
-		JLabel lblNewLabel_1_3 = new JLabel("Serial Number");
-		lblNewLabel_1_3.setForeground(Color.WHITE);
-		lblNewLabel_1_3.setBounds(12, 467, 147, 15);
-		panel.add(lblNewLabel_1_3);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(158, 461, 174, 28);
-		panel.add(textField_6);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("Unit Price");
+		lblNewLabel_1_4.setBounds(12, 368, 147, 15);
+		customerDetails.add(lblNewLabel_1_4);
+		lblNewLabel_1_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1_4.setForeground(Color.WHITE);
-		lblNewLabel_1_4.setBounds(12, 507, 147, 15);
-		panel.add(lblNewLabel_1_4);
 		
 		textField_7 = new JTextField();
+		textField_7.setBounds(146, 363, 162, 28);
+		customerDetails.add(textField_7);
 		textField_7.setColumns(10);
-		textField_7.setBounds(158, 501, 174, 28);
-		panel.add(textField_7);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("No. of Units");
+		lblNewLabel_1_5.setBounds(12, 420, 147, 15);
+		customerDetails.add(lblNewLabel_1_5);
+		lblNewLabel_1_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1_5.setForeground(Color.WHITE);
-		lblNewLabel_1_5.setBounds(12, 547, 147, 15);
-		panel.add(lblNewLabel_1_5);
 		
 		textField_8 = new JTextField();
+		textField_8.setBounds(146, 415, 162, 28);
+		customerDetails.add(textField_8);
 		textField_8.setColumns(10);
-		textField_8.setBounds(158, 541, 174, 28);
-		panel.add(textField_8);
 		
 		JLabel lblNewLabel_1_6 = new JLabel("Total Price");
+		lblNewLabel_1_6.setBounds(12, 458, 147, 15);
+		customerDetails.add(lblNewLabel_1_6);
+		lblNewLabel_1_6.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1_6.setForeground(Color.WHITE);
-		lblNewLabel_1_6.setBounds(12, 587, 147, 15);
-		panel.add(lblNewLabel_1_6);
 		
 		textField_9 = new JTextField();
+		textField_9.setBounds(146, 453, 162, 28);
+		customerDetails.add(textField_9);
 		textField_9.setColumns(10);
-		textField_9.setBounds(158, 581, 174, 28);
-		panel.add(textField_9);
+		
+		JButton clearBtn = new JButton("Clear");
+		clearBtn.setBounds(25, 569, 110, 36);
+		customerDetails.add(clearBtn);
+		clearBtn.setBackground(new Color(238, 238, 238));
+		
+		JButton btnAddProduct = new JButton("Order");
+		btnAddProduct.setBounds(156, 569, 131, 36);
+		customerDetails.add(btnAddProduct);
+		btnAddProduct.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAddProduct.setBackground(new Color(255, 217, 102));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(88, 96, 108));
@@ -310,15 +315,38 @@ public class SalePage extends JFrame {
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
+				{"Product 1", "Code 1", 2, 2.3, "Mridul Private Limited"},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"Product Name", "Product Code", "Quantity", "Unit Price", "Vendor Name"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, Integer.class, Double.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
 		table_1.setBounds(354, 35, 735, 508);
 		contentPane.add(table_1);
 		
