@@ -10,6 +10,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JDesktopPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FrontPage extends JFrame {
 
@@ -57,32 +59,44 @@ public class FrontPage extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnSaleButton = new JButton("Sale Entry");
+		btnSaleButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.setVisible(false);
+			}
+		});
 		btnSaleButton.setForeground(new Color(254, 255, 255));
 		btnSaleButton.setBorderPainted(false);
 		btnSaleButton.setFont(new Font("Helvetica", Font.PLAIN, 17));
 		btnSaleButton.setBackground(new Color(0, 173, 181));
-		btnSaleButton.setBounds(94, 126, 139, 50);
+		btnSaleButton.setBounds(94, 126, 154, 50);
 		contentPane.add(btnSaleButton);
 		
 		JButton btnPurchaseEntry = new JButton("Purchase Entry");
-		btnPurchaseEntry.setForeground(SystemColor.window);
-		btnPurchaseEntry.setFont(new Font("Helvetica", Font.PLAIN, 17));
+		btnPurchaseEntry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnPurchaseEntry.setForeground(new Color(254, 255, 255));
+		btnPurchaseEntry.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		btnPurchaseEntry.setBorderPainted(false);
 		btnPurchaseEntry.setBackground(new Color(0, 173, 181));
-		btnPurchaseEntry.setBounds(419, 126, 139, 50);
+		btnPurchaseEntry.setBounds(377, 126, 161, 50);
 		contentPane.add(btnPurchaseEntry);
 		
-		JButton btnViewEntries = new JButton("View Entries");
-		btnViewEntries.setForeground(SystemColor.window);
-		btnViewEntries.setFont(new Font("Helvetica", Font.PLAIN, 17));
-		btnViewEntries.setBackground(new Color(0, 173, 181));
-		btnViewEntries.setBounds(94, 243, 139, 50);
-		contentPane.add(btnViewEntries);
+		JButton btnViewSales = new JButton("View Sales");
+		btnViewSales.setForeground(new Color(254, 255, 255));
+		btnViewSales.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		btnViewSales.setBorderPainted(false);
+		btnViewSales.setBackground(new Color(0, 173, 181));
+		btnViewSales.setBounds(94, 238, 154, 50);
+		contentPane.add(btnViewSales);
 		
 		JButton btnCalculator = new JButton("Calculator");
-		btnCalculator.setForeground(SystemColor.window);
-		btnCalculator.setFont(new Font("Helvetica", Font.PLAIN, 17));
+		btnCalculator.setForeground(new Color(254, 255, 255));
+		btnCalculator.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		btnCalculator.setBorderPainted(false);
 		btnCalculator.setBackground(new Color(0, 173, 181));
-		btnCalculator.setBounds(419, 243, 139, 50);
+		btnCalculator.setBounds(377, 238, 161, 50);
 		contentPane.add(btnCalculator);
 	}
 }
