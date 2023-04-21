@@ -4,12 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JDesktopPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -37,12 +38,9 @@ public class FrontPage extends JFrame {
 	 * Create the frame.
 	 */
 	public FrontPage() {
-		setEnabled(false);
-		setBackground(new Color(34, 40, 48));
-		
-		setTitle("Billing Software");
+		setBackground(new Color(56, 62, 70));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 686, 412);
+		setBounds(100, 100, 647, 422);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(56, 62, 70));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,53 +48,55 @@ public class FrontPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Visual Cat Pro");
-		lblNewLabel.setBackground(new Color(238, 238, 238));
-		lblNewLabel.setForeground(new Color(238, 238, 238));
-		lblNewLabel.setFont(new Font("Helvetica", Font.BOLD, 38));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(6, 30, 674, 58);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnSaleButton = new JButton("Sale Entry");
-		btnSaleButton.addActionListener(new ActionListener() {
+
+		JButton btnNewButton = new JButton("Sale Entry");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(0, 173, 181));
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.setVisible(false);
+				setVisible(false);
+				new SalePage().setVisible(true);
 			}
 		});
-		btnSaleButton.setForeground(new Color(254, 255, 255));
-		btnSaleButton.setBorderPainted(false);
-		btnSaleButton.setFont(new Font("Helvetica", Font.PLAIN, 17));
-		btnSaleButton.setBackground(new Color(0, 173, 181));
-		btnSaleButton.setBounds(94, 126, 154, 50);
-		contentPane.add(btnSaleButton);
+		btnNewButton.setBounds(93, 160, 129, 44);
+		contentPane.add(btnNewButton);
 		
 		JButton btnPurchaseEntry = new JButton("Purchase Entry");
 		btnPurchaseEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Purchase().setVisible(true);
 			}
 		});
-		btnPurchaseEntry.setForeground(new Color(254, 255, 255));
-		btnPurchaseEntry.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		btnPurchaseEntry.setBorderPainted(false);
+		btnPurchaseEntry.setForeground(new Color(255, 255, 255));
 		btnPurchaseEntry.setBackground(new Color(0, 173, 181));
-		btnPurchaseEntry.setBounds(377, 126, 161, 50);
+		btnPurchaseEntry.setBounds(374, 160, 142, 44);
 		contentPane.add(btnPurchaseEntry);
 		
 		JButton btnViewSales = new JButton("View Sales");
-		btnViewSales.setForeground(new Color(254, 255, 255));
-		btnViewSales.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		btnViewSales.setBorderPainted(false);
+		btnViewSales.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new ViewSale().setVisible(true);
+			}
+		});
+		btnViewSales.setForeground(new Color(255, 255, 255));
 		btnViewSales.setBackground(new Color(0, 173, 181));
-		btnViewSales.setBounds(94, 238, 154, 50);
+		btnViewSales.setBounds(93, 259, 129, 44);
 		contentPane.add(btnViewSales);
 		
 		JButton btnCalculator = new JButton("Calculator");
-		btnCalculator.setForeground(new Color(254, 255, 255));
-		btnCalculator.setFont(new Font("SansSerif", Font.PLAIN, 17));
-		btnCalculator.setBorderPainted(false);
+		btnCalculator.setForeground(new Color(255, 255, 255));
 		btnCalculator.setBackground(new Color(0, 173, 181));
-		btnCalculator.setBounds(377, 238, 161, 50);
+		btnCalculator.setBounds(374, 259, 142, 44);
+
 		contentPane.add(btnCalculator);
+		
+		JLabel lblNewLabel = new JLabel("Visual Cat Pro");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBackground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 40));
+		lblNewLabel.setBounds(180, 39, 270, 44);
+		contentPane.add(lblNewLabel);
 	}
 }

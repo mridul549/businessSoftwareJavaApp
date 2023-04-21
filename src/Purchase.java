@@ -292,6 +292,7 @@ public class Purchase extends JFrame {
 		lblNewLabel_2_3_2.setBounds(517, 116, 18, 15);
 		panel_1.add(lblNewLabel_2_3_2);
 		
+
 		table = new JTable();
 		table.setBounds(1085, 12, -728, 535);
 		
@@ -312,6 +313,7 @@ public class Purchase extends JFrame {
 		
 		contentPane.add(table);
 		
+
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -352,4 +354,6 @@ public class Purchase extends JFrame {
 		
 
 	}
+
 }
+
