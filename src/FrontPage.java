@@ -81,12 +81,21 @@ public class FrontPage extends JFrame {
 		contentPane.add(btnViewSales);
 		
 		JButton btnCalculator = new JButton("Calculator");
+		btnCalculator.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Runtime.getRuntime().exec("calc");
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
+			}
+		});
 		btnCalculator.setForeground(new Color(255, 255, 255));
 		btnCalculator.setBackground(new Color(0, 173, 181));
 		btnCalculator.setBounds(374, 259, 142, 44);
 		contentPane.add(btnCalculator);
 		
-		JLabel lblNewLabel = new JLabel("Visual Cat Pro");
+		JLabel lblNewLabel = new JLabel("Business App");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 40));
