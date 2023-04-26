@@ -1,34 +1,38 @@
+import java.awt.event.*;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.SystemColor;
+import java.awt.Font;
 
+import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
-import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
-import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
-import java.util.Date;
 import javax.swing.Timer;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.TitledBorder;
+
 import java.text.SimpleDateFormat;
-import java.awt.event.*;
+
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,8 +40,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.border.TitledBorder;
 
 public class SalePage extends JFrame {
 	
@@ -118,8 +120,6 @@ public class SalePage extends JFrame {
 	 */
 	public SalePage() {
 		
-		
-		
 		setBackground(new Color(34, 40, 48));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1920, 1080);
@@ -174,12 +174,13 @@ public class SalePage extends JFrame {
 		            pst.setString(8,cadd);
 		            
 		            pst.executeUpdate();
+		            Double currPrice=Double.parseDouble(nou)*Double.parseDouble(uprice);
 		            totalPrice += Double.parseDouble(nou)*Double.parseDouble(uprice);
 
 		            if(bname=="" || pname=="" || uprice=="" || nou=="" || cname=="" || ccont=="" || cadd=="") {
 		            	JOptionPane.showMessageDialog(btnAddProduct, "Please Enter all data");
 		            } else {
-		            	Object values[] = {pname, Double.parseDouble(uprice), Integer.parseInt(nou), totalPrice};
+		            	Object values[] = {pname, Double.parseDouble(uprice), Integer.parseInt(nou), currPrice};
 		            	DefaultTableModel tbModel = (DefaultTableModel)saleEntriesTable.getModel();
 		            	tbModel.addRow(values);
 		            }
@@ -322,6 +323,8 @@ public class SalePage extends JFrame {
 		JButton newBillBtn = new JButton("New Bill");
 		newBillBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DefaultTableModel model = (DefaultTableModel)saleEntriesTable.getModel();
+				model.setRowCount(0);
 				productName.setText("");
 	            unitPrice.setText("");
 	            brandName.setText("");
@@ -330,6 +333,13 @@ public class SalePage extends JFrame {
 	            custContact.setText("");
 	            custAdd.setText("");
 	            brandName.requestFocus();
+	            subTotalPrice.setText("");
+	            totalPriceLabel.setText("");
+	            afterDiscount.setText("0");
+	            afterTax.setText("0");
+	            finalAfterDiscount.setText("");
+	            finalAfterTax.setText("");
+	            custName.requestFocus();
 	            invoiceid();
 			}
 		});
@@ -433,6 +443,7 @@ public class SalePage extends JFrame {
 		calcPanel4.add(totalPriceLabel);
 		
 		afterDiscount = new JTextField();
+		afterDiscount.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		afterDiscount.setText("0");
 		afterDiscount.setBounds(460, 61, 39, 35);
 		panel_1.add(afterDiscount);
