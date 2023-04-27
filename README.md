@@ -48,6 +48,6 @@ Refer Project Report for more clarification
 ```
 ## Credits
 
-This project is developed by @mridul549, @parteekcoder, @Mani-kumar-2002 as part of Java Project at NIT Jalandhar.
+This project is developed by [@mridul549](https://github.com/mridul549), [@parteekcoder](https://github.com/parteekcoder), [@Mani-kumar-2002](https://github.com/Mani-Kumar-2002) and [@AbhishekLaddha5](https://github.com/AbhishekLaddha5) as part of Java Project at NIT Jalandhar.
 
 > Note: This file is written in Markdown language make sure you have a markdown viewer
